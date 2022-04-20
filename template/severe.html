@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Title goes here</title>
+  <meta name="description" content="Description of your site goes here">
+  <meta name="keywords" content="keyword1, keyword2, keyword3">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="main-wraper">
+<div id="top-wraper">
+<div id="banner">Wound Analysis </div>
+</div>
+<div id="mid-wraper">
+<!--Designed by--><a target="_blank" href="http://www.htmltemplates.net"><img src="{% static 'images/design.gif'%}" class="copyright" alt="htmltemplates.net"></a>
+<div class="mid-wraper-top">
+<div class="mid-leftouter">
+<div class="mid-left-container">
+<h1>Wound Analysis <span class="yellow-heading">REPORT</span></h1>
+<h2><b>Warning!
+
+    Your wound is SEVERE!
+    
+    Potential chances of high Blood Loss, Drop in Vitals, Tissue ruptures and Organ Damage!
+    
+    Report to your nearest hospital Immediately!</b></h2>
+<br>
+</p>
+<h1>First Aid <span class="yellow-heading">Treatment</span></h1>
+<p class="left-bullet"><b>Take this wound seriously contact the nearest hospital as soon as you can </b> it might have tissue rupture or failed organs. </p>
+<p class="left-bullet">Rinse and clean the abrasion.
+    Hold the affected area under lukewarm tap water for a couple of minutes. Do not aggressively scrub the wound. Attempt to gently remove any dirt or other particles.</p>
+<p class="left-bullet">Apply a thin layer of petroleum jelly or antibiotic ointment.
+    This will help keep the affected area moist and prevent infection. If you notice the formation of a rash or redness due to antibiotic ointment use, suspend use of the ointment.</p>
+<p class="left-bullet">Protect and cover the abrasion.
+    Use a clean bandage or a piece of gauze with tape. This helps keep the wound clean, prevents bacteria from infecting the area and helps keep the wound from reopening.</p>
+</div>
+<button onclick="getLocation()">Get Your Location</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude ;
+  
+}
+</script>
+<button  type="button"><a href='hospital'> Location of nearest Hospital near you</a></button>`
+<div class="mid-left-container" style="margin-top: 10px;">
+</div>
+</div>
+<div class="right-container">
+<div class="right-container-top">
+<h3>Wound<span class="yellow-heading">Classification</span></h3>
+<ul>
+
+<br>
+<h2>The wound is classified as </h2>
+<h2><span class="yellow-heading">{{predictedlabel}}</span></h2>
+<img src={{filePathName}} alt='imagename' height="300" width="300">
+<br>
+</ul>
+</div>
+</div>
+</div>
+<div class="mid-wraper-bttm"><img src="{% static 'images/mid-bttm.jpg'%}" alt=""></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</body></html>

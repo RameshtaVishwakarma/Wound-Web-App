@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Wound Classification</title>
+  <meta name="description" content="Description of your site goes here">
+  <meta name="keywords" content="keyword1, keyword2, keyword3">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="main-wraper">
+<div id="top-wraper">
+<div id="banner">Wound Analysis </div>
+</div>
+<div id="mid-wraper">
+<!--Designed by--><a target="_blank" href="http://www.htmltemplates.net"><img src="{% static 'images/design.gif'%}" class="copyright" alt="htmltemplates.net"></a>
+<div class="mid-wraper-top">
+<div class="mid-leftouter">
+<div class="mid-left-container">
+<h1>Upload<span class="yellow-heading">Image</span></h1>
+
+<p>
+<br>
+
+<form method="post" enctype="multipart/form-data" action="predictImage">
+
+    {% csrf_token %}
+    <div class="col-md-4 col-sm-4"><label for="fname"><h3><b>Upload Image File Here:</b></label><br></h3></div> <input name="filePath"
+        type="file"><br><br>
+    <br>
+
+
+    <input type="submit" value="Submit"></div>
+    <!--<h2>The wound is classified as </h2>-->
+    <!--<img src={{filePathName}} alt='{{predictedlabel}}' height="300" width="300">-->
+    <!--   {{filePathName}}-->
+
+</form>
+<h1>How to Take image for perfect <span class="yellow-heading">Wound Analysis</span></h1>
+<p>Taking a wound image accurately is a major part for classification of the wounds. the patient life depends on the clearity of the image it depends on<br>
+<br>
+</p>
+<p class="left-bullet">Getthe light right
+    Ensure the camera flash is set to "on"–
+    not "auto" or "of</p>
+<p class="left-bullet">Rinse and clean the abrasion.
+    Hold the affected area under lukewarm tap water for a couple of minutes. Do not aggressively scrub the wound. Attempt to gently remove any dirt or other particles.</p>
+<p class="left-bullet">Apply a thin layer of petroleum jelly or antibiotic ointment.
+    This will help keep the affected area moist and prevent infection. If you notice the formation of a rash or redness due to antibiotic ointment use, suspend use of the ointment.</p>
+<p class="left-bullet">Protect and cover the abrasion.
+    Use a clean bandage or a piece of gauze with tape. This helps keep the wound clean, prevents bacteria from infecting the area and helps keep the wound from reopening.</p>
+</ul>
+</div>
+</div>
+</div>
+<div class="mid-wraper-bttm"><img src="{% static 'images/mid-bttm.jpg'%}" alt=""></div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <title>Browser Location</title>
+    </head>
+    <body>
+        <p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+</script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            var platform = new H.service.Platform({
+                "apikey": "AumOiTnN7emQCu55GkRXiAl4jbDAsNNb9c5XT3WlPsY"
+            });
+            var geocoder = platform.getSearchService();
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    geocoder.reverseGeocode(
+                        {
+                            limit: 1,
+                            at: position.coords.latitude + "," + position.coords.longitude
+                        }, data => {
+                            x.innerHTML = "The nearest address to your location is:\n" + data.items[0].address.label;
+                        }, error => {
+                            console.error(error);
+                        }
+                    );
+                });
+            } else {
+                console.error("Geolocation is not supported by this browser!");
+            }
+        </script>
+    </body>
+</html>
